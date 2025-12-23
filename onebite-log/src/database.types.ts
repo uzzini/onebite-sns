@@ -25,7 +25,7 @@ export type Database = {
         }
         Insert: {
           author_id?: string
-          content: string
+          content?: string
           created_at?: string
           id?: number
           image_urls?: string[] | null
@@ -38,6 +38,30 @@ export type Database = {
           id?: number
           image_urls?: string[] | null
           like_count?: number
+        }
+        Relationships: []
+      }
+      profile: {
+        Row: {
+          avatar_url: string | null
+          bio: string
+          created_at: string
+          id: string
+          nickname: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          bio?: string
+          created_at?: string
+          id?: string
+          nickname?: string
+        }
+        Update: {
+          avatar_url?: string | null
+          bio?: string
+          created_at?: string
+          id?: string
+          nickname?: string
         }
         Relationships: []
       }
