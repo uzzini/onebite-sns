@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/carousel";
 import defaultAvatar from "@/assets/default-avatar.jpg";
 import { MessageCircle } from "lucide-react";
+import { Link } from "react-router";
 import { useSession } from "@/store/session";
 import { usePostByIdData } from "@/hooks/queries/use-post-by-id-data";
 import { formatTimeAgo } from "@/lib/time";
@@ -38,11 +39,13 @@ export default function PostItem({ postId }: { postId: number }) {
       <div className="flex justify-between">
         {/* 1-1. 유저 정보 */}
         <div className="flex items-start gap-4">
-          <img
-            className="h-10 w-10 rounded-full object-cover"
-            src={post.author.avatar_url || defaultAvatar}
-            alt={`${post.author.nickname}의 프로필 이미지`}
-          />
+          <Link to={`profile/${post.author_id}`}>
+            <img
+              className="h-10 w-10 rounded-full object-cover"
+              src={post.author.avatar_url || defaultAvatar}
+              alt={`${post.author.nickname}의 프로필 이미지`}
+            />
+          </Link>
           <div>
             <div className="font-bold hover:underline">
               {post.author.nickname}
