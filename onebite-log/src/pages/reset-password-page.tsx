@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { useUpdatePassword } from "@/hooks/mutations/use-update-password";
+import { useUpdatePassword } from "@/hooks/mutations/auth/use-update-password";
 import { generateErrorMessage } from "@/lib/error";
 
 export default function ResetPasswordPage() {

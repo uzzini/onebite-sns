@@ -3,8 +3,8 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { useState } from "react";
 import { Link } from "react-router";
-import { useSignInWithPassword } from "@/hooks/mutations/use-sign-in-with-password";
-import { useSignInWithOAuth } from "@/hooks/mutations/use-sign-in-with-oauth";
+import { useSignInWithPassword } from "@/hooks/mutations/auth/use-sign-in-with-password";
+import { useSignInWithOAuth } from "@/hooks/mutations/auth/use-sign-in-with-oauth";
 import { generateErrorMessage } from "@/lib/error";
 import gitHubLogo from "@/assets/github-mark.svg";
 

@@ -1,0 +1,37 @@
+import supabase from "@/lib/supabase";
+import { BUCKET_NAME } from "@/lib/constants";
+
+export async function uploadImage({
+  file,
+  filePath,
+}: {
+  file: File;
+  filePath: string;
+}) {
+  const { data, error } = await supabase.storage
+    .from(BUCKET_NAME)
+    .upload(filePath, file);
+
+  if (error) throw error;
+
+  // 업로드 한 이미지의 주소 반환
+  const {
+    data: { publicUrl },
+  } = supabase.storage.from(BUCKET_NAME).getPublicUrl(data.path);
+
+  return publicUrl;
+}
+
+export async function deleteImagesInPath(path: string) {
+  const { data: files, error: fetchFilesError } = await supabase.storage
+    .from(BUCKET_NAME)
+    .list(path);
+
+  if (fetchFilesError) throw fetchFilesError;
+
+  const { error: removeError } = await supabase.storage
+    .from(BUCKET_NAME)
+    .remove(files.map((file) => `${path}/${file.name}`));
+
+  if (removeError) throw removeError;
+}
