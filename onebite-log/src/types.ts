@@ -17,3 +17,5 @@ export type useMutationCallback = {
   onSuccess?: () => void;
   onError?: (error: Error) => void;
 };
+
+export type Theme = "system" | "dark" | "light";
